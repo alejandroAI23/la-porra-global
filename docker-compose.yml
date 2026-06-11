@@ -4,6 +4,7 @@ services:
   mysql:
     image: mysql:8.4
     container_name: porra-mysql
+    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     environment:
       MYSQL_DATABASE: porra_global
       MYSQL_USER: porra
@@ -27,7 +28,7 @@ services:
       mysql:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/porra_global?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/porra_global?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC&characterEncoding=UTF-8&useUnicode=true
       SPRING_DATASOURCE_USERNAME: porra
       SPRING_DATASOURCE_PASSWORD: porra_secret
       JWT_SECRET: ${JWT_SECRET:-change-me-in-production-minimum-256-bits-secret-key-here}

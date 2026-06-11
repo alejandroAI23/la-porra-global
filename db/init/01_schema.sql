@@ -3,6 +3,9 @@
 -- Plataforma no oficial de predicciones. Sin apuestas con dinero real.
 -- =====================================================================
 
+SET NAMES utf8mb4;
+SET CHARACTER SET utf8mb4;
+
 CREATE TABLE IF NOT EXISTS roles (
     id      BIGINT AUTO_INCREMENT PRIMARY KEY,
     name    VARCHAR(30) NOT NULL UNIQUE
@@ -31,9 +34,9 @@ CREATE TABLE IF NOT EXISTS teams (
     id         BIGINT AUTO_INCREMENT PRIMARY KEY,
     name       VARCHAR(60) NOT NULL UNIQUE,
     code       VARCHAR(3)  NOT NULL UNIQUE,
-    flag_emoji VARCHAR(10),
+    flag_emoji VARCHAR(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
     group_name VARCHAR(5)
-) ENGINE = InnoDB;
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS matches (
     id           BIGINT AUTO_INCREMENT PRIMARY KEY,
